@@ -2,8 +2,8 @@
 //  XpressDealUITests.swift
 //  XpressDealUITests
 //
-//  Created by Lakeba_26 on 21/11/17.
-//  Copyright © 2017 Lakeba_26. All rights reserved.
+//  Created by Lakeba_Adminstrator on 04/11/17.
+//  Copyright © 2017 spiksolutions. All rights reserved.
 //
 
 import XCTest
