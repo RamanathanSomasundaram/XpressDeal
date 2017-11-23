@@ -8,6 +8,15 @@
 
 import UIKit
 
+class NodeIdentifier : NSObject{
+    var identifier : String!
+    
+    init(withIdentifier identifier: String)
+    {
+        self.identifier = identifier
+    }
+}
+
 class MenuListViewController: UIViewController {
 
     @IBOutlet var tbl_MenuList: UITableView!
@@ -63,17 +72,22 @@ extension MenuListViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return kjtreeInstance.tableView(tableView, numberOfRowsInSection: section)
     }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let node = kjtreeInstance.cellIdentifierUsingTableView(tableView, cellForRowAt: indexPath)
-    
         let indexTuples = node.index.components(separatedBy: ".")
         let arrayParent = (arrayParents!.object(at: (indexTuples[0] as NSString).integerValue) as! NSDictionary)
+        
         let arrayName = (arrayParent.value(forKey: "subcat") as? NSArray)
+        
+        
         // Return below cell for more internal levels....
         var tableviewcell = tableView.dequeueReusableCell(withIdentifier: "cellidentity")
         if tableviewcell == nil {
             tableviewcell = UITableViewCell(style: .default, reuseIdentifier: "cellidentity")
         }
+        
         // You can return different cells for Parents, childs, subchilds, .... as below.
         if indexTuples.count == 1  || indexTuples.count == 4 {
             // return cell for Parents and subchilds at level 4. (For Level-1 and Internal level-4)
@@ -111,27 +125,26 @@ extension MenuListViewController : UITableViewDelegate,UITableViewDataSource{
         return tableviewcell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let node = kjtreeInstance.tableView(tableView, didSelectRowAt: indexPath)
+        print("Node \(node)")
         let indexTuples = node.index.components(separatedBy: ".")
-        if(indexTuples.count == 2)
-        {
-            self.CallCategoryClass(CategoryID : node.id)
-
-        }
-        else if(indexTuples.count == 3)
-        {
+        print("indexTuples \(indexTuples)")
+        let arrayParent = (arrayParents!.object(at: (indexTuples[0] as NSString).integerValue) as! NSDictionary)
+        if (arrayParent.value(forKey: "subcat") as? NSArray) == nil {
             self.CallCategoryClass(CategoryID : node.id)
         }
-        else
-        {
-            self.CallCategoryClass(CategoryID : node.id)
-
+        else {
+            let arrayName = (arrayParent.value(forKey: "subcat") as? NSArray)
+            if(indexTuples.count == 2)
+            {
+            if ((arrayName?.object(at: (indexTuples[1] as NSString).integerValue) as! NSDictionary).value(forKey: "subcat") as? NSArray) == nil
+                {
+                    self.CallCategoryClass(CategoryID : node.id)
+                }
+            }
+            
         }
-        print(node.index)
-        // if you've provided a 'Key'/'Id', you will receive it here.
-        print(node.keyIdentity)
-        // if you've added any identifier or used indexing format
-        print(node.givenIndex)
         
     }
     

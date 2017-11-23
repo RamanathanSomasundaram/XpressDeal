@@ -4,18 +4,89 @@
 //
 //  Created by Lakeba_26 on 20/11/17.
 //  Copyright © 2017 spiksolutions. All rights reserved.
-//
+//AIzaSyC2BwWCfZz3gZ5Ov7QnbNPnXXUlN_Y1dxY
 
 import UIKit
 
 class CategoriesDetailViewController: UIViewController {
 
+    @IBOutlet var lbl_titleAd: UILabel!
+    @IBOutlet var btn_addFav: UIButton!
+    @IBOutlet var lvl_viteCount: UILabel!
+    @IBOutlet var Tbl_detail: UITableView!
+    @IBOutlet var lbl_special: UILabel!
+    @IBOutlet var lbl_location: UILabel!
+    @IBOutlet var userReviewView: UIView!
+    @IBOutlet var lbl_desc: UILabel!
+    
+    var displayDetailDict : NSDictionary!
+    var detailID : String!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        displayDetailDict = NSDictionary()
+        Tbl_detail.register(UINib.init(nibName: "DisplayAdDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DisplayDetail")
+            self.Tbl_detail.tableFooterView = UIView()
+        self.loadCategoriesList()
+        self.title = "XpressDeal"
+        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.barTintColor = navigationbarColor
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationItem.hidesBackButton = true
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
+        flipButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = flipButton
         // Do any additional setup after loading the view.
     }
-
+    @objc func backHome()
+    {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func loadCategoriesList()
+    {
+        if(Utilities.checkForInternet())
+        {
+            Utilities.showLoading()
+            Alamofire.request("http://172.104.181.194/demos/dj/index.php?option=com_djclassifieds&view=item&format=json&id=\(detailID!)").responseJSON { response in
+                if let json = response.result.value {
+                    //print("JSON: \(json)") // serialized json response
+                    let jsonResult = ((json as AnyObject).value(forKey: "data")! as! NSDictionary)
+                    self.displayDetailDict = jsonResult
+                }
+                let dispatchTime = DispatchTime.now()
+                DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
+                    let dicValues = (self.displayDetailDict.value(forKey: "item")! as! NSDictionary)
+                    self.lbl_titleAd.text =  (dicValues.value(forKey:"c_name") as! String)
+                    self.lbl_desc.text = (dicValues.value(forKey:"description") as! String)
+                    print((dicValues.value(forKey:"description") as! String))
+                    self.Tbl_detail.reloadData()
+                    Utilities.hideLoading()
+                })
+            }
+        }
+    }
+    
+    @IBAction func userReviewAction(_ sender: Any) {
+        
+        let userReview = UserReviewViewController.init(nibName: "UserReviewViewController", root: self)
+        userReview.modalPresentationStyle = .overCurrentContext
+        self.present(userReview, animated: true, completion: nil)
+    }
+    
+    @IBAction func showAdAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func socialAction(_ sender: Any) {
+        
+    }
+    @IBAction func reportAction(_ sender: Any) {
+        let report = ReportAbuseViewController.init(nibName: "ReportAbuseViewController", root: self)
+            report.modalPresentationStyle = .overCurrentContext
+        self.present(report, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,4 +103,41 @@ class CategoriesDetailViewController: UIViewController {
     }
     */
 
+}
+
+extension CategoriesDetailViewController : UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(self.displayDetailDict.count > 0)
+        {
+        return 1
+        }
+        return 0
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayDetail") as! DisplayAdDetailTableViewCell
+        let image : UIImage = UIImage(named: "car")!
+        let imageArray = (self.displayDetailDict.value(forKey: "item_images")! as! NSArray)
+        let imageDict = (imageArray.object(at: indexPath.row) as! NSDictionary)
+        Tbl_detail.backgroundColor = UIColor.black
+        cell.img_detail.sd_setShowActivityIndicatorView(true)
+        cell.img_detail.sd_setIndicatorStyle(.gray)
+        cell.img_detail.sd_setImage(with: URL(string: "http://172.104.181.194/demos/dj\((imageDict.value(forKey: "thumb_b") as! String))") , placeholderImage: image, options: .refreshCached)
+        let dicValues = (self.displayDetailDict.value(forKey: "item")! as! NSDictionary)
+        cell.createTitle.text = "Created By : \(dicValues.value(forKey: "username")!)"
+        cell.Lbl_phone.text = "Phone : test"
+        cell.lbl_Email.text = "Email : \(dicValues.value(forKey: "u_email")!)"
+        cell.lbl_AddDate.text = "Added Date : \(dicValues.value(forKey: "date_start")!)"
+        cell.selectionStyle = .none
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
 }

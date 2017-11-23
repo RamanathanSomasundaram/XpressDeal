@@ -10,6 +10,7 @@ import UIKit
 
 class ReportAbuseViewController: UIViewController {
 
+    @IBOutlet var cardView: UIView!
     
     var rootVC : UIViewController!
     
@@ -22,15 +23,17 @@ class ReportAbuseViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Utilities.viewBorderColor(ContentView:cardView)
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func cancelAction(_ sender: Any) {
+        rootVC.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

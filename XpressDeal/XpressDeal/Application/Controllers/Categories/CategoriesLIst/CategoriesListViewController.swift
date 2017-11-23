@@ -94,5 +94,12 @@ extension CategoriesListViewController : UITableViewDelegate,UITableViewDataSour
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dicValues = self.categoriesListArray.object(at: indexPath.row) as! NSDictionary
+        let categoryDetails = self.storyboard?.instantiateViewController(withIdentifier: "CategoriesDetailViewController") as! CategoriesDetailViewController
+        categoryDetails.detailID = (dicValues.value(forKey: "id") as! String)
+        self.navigationController?.pushViewController(categoryDetails, animated: true)
+    }
+    
     
 }

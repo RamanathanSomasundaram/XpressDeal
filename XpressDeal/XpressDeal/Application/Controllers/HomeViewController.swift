@@ -24,7 +24,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         self.loadCategoriesList(URLString: CategoriesListAPI)
-        APIManagerClass.navigationSubmenuList(URLString: navigationMenuAPI)
         self.listCollectionView.register(UINib.init(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categorieCell")
         self.listCollectionView.delegate = self
         self.listCollectionView.dataSource = self
@@ -35,9 +34,9 @@ class HomeViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         searchBarTopConstraint.constant = -80
-        self.searchBarCancelButtonClicked(searchBarControl)
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.searchBarCancelButtonClicked(searchBarControl)
         collectionViewFlowLayout = UICollectionViewFlowLayout()
         let size1 = Utilities.collectionViewCellWidth()
         collectionViewFlowLayout.itemSize = CGSize(width: size1, height: size1)
@@ -74,6 +73,7 @@ class HomeViewController: UIViewController {
                 let jsonResult = ((json as AnyObject).value(forKey: "data")! as! [Any])
                 self.categoriesListArray = NSMutableArray(array: jsonResult)
                 commonAppDelegate.categoriesListArray = self.categoriesListArray
+                //APIManagerClass.navigationSubmenuList(URLString: navigationMenuAPI)
             }
             let dispatchTime = DispatchTime.now()
             DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
