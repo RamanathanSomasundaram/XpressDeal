@@ -28,6 +28,8 @@ class LoginViewController: UIViewController {
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(leftMenuAction))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
+        txt_username.delegate = self
+        txt_username.tag = 256
         
         // Do any additional setup after loading the view.
     }
@@ -37,6 +39,19 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signInAction(_ sender: Any) {
+        
+        let inputFileds = [txt_username, txt_password]
+        for fields in inputFileds
+        {
+            if (fields?.text?.isEmpty)!
+            {
+                Utilities.AnimationShakeTextField(textField: fields!)
+                CRNotifications.showNotification(type: .error, title: "Warning", message: "Required field", dismissDelay: 3.0)
+                txt_username.errorMessage = ""
+                txt_password.errorMessage = ""
+                return
+            }
+        }
         Utilities.showLoading()
         Alamofire.request("\(signInAPI)username=\(txt_username.text!)&password=\(txt_password.text!)").responseJSON { response in
             if let json = response.result.value {
@@ -98,4 +113,34 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+extension LoginViewController : UITextFieldDelegate
+{
+    /// Implementing a method on the UITextFieldDelegate protocol. This will notify us when something has changed on the textfield
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if(textField.tag == 256)
+        {
+        if let text = textField.text {
+            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+                if(text.contains("@"))
+                {
+                    if(!userTextFieldValidation.isValidEmail(Email: text))
+                {
+                        floatingLabelTextField.errorMessage = "Invalid email"
+                }
+                else
+                {
+                    floatingLabelTextField.errorMessage = ""
+                }
+                }
+                else
+                {
+                    floatingLabelTextField.errorMessage = ""
+
+                }
+            }
+        }
+    }
+        return true
+    }
 }

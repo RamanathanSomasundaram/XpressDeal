@@ -9,6 +9,7 @@
 import UIKit
 import SystemConfiguration
 var commonAppDelegate : AppDelegate! = UIApplication.shared.delegate as! AppDelegate
+var CommonHomeAPI = "http://172.104.181.194/demos/dj"
 //macros
 extension UIColor {
     convenience init(netHex:Int) {

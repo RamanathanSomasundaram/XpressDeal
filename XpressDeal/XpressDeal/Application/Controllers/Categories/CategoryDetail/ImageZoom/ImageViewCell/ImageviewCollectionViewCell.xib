@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageView" id="gTV-IL-0wX" customClass="ImageviewCollectionViewCell" customModule="XpressDeal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="322" height="189"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="322" height="189"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NaL-SP-Jgt" customClass="CardView" customModule="XpressDeal" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="312" height="179"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nmH-5T-MyP">
+                                <rect key="frame" x="0.0" y="0.0" width="312" height="179"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nmH-5T-MyP" firstAttribute="centerX" secondItem="NaL-SP-Jgt" secondAttribute="centerX" id="0pC-Oy-1Zq"/>
+                            <constraint firstItem="nmH-5T-MyP" firstAttribute="centerY" secondItem="NaL-SP-Jgt" secondAttribute="centerY" id="JXU-mt-fT8"/>
+                            <constraint firstAttribute="trailing" secondItem="nmH-5T-MyP" secondAttribute="trailing" id="Qez-YB-kFZ"/>
+                            <constraint firstItem="nmH-5T-MyP" firstAttribute="top" secondItem="NaL-SP-Jgt" secondAttribute="top" id="VXu-7T-knK"/>
+                            <constraint firstItem="nmH-5T-MyP" firstAttribute="leading" secondItem="NaL-SP-Jgt" secondAttribute="leading" id="rF7-AL-iw4"/>
+                            <constraint firstAttribute="bottom" secondItem="nmH-5T-MyP" secondAttribute="bottom" id="t0r-au-Fl1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NaL-SP-Jgt" secondAttribute="bottom" constant="5" id="0qE-DC-wva"/>
+                <constraint firstItem="NaL-SP-Jgt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Ba0-PT-TIc"/>
+                <constraint firstItem="NaL-SP-Jgt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Qno-lh-34W"/>
+                <constraint firstAttribute="trailing" secondItem="NaL-SP-Jgt" secondAttribute="trailing" constant="5" id="ylB-ix-vGj"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="322" height="189"/>
+            <connections>
+                <outlet property="imgViewCell" destination="nmH-5T-MyP" id="BM7-97-o1X"/>
+            </connections>
+            <point key="canvasLocation" x="58" y="123.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

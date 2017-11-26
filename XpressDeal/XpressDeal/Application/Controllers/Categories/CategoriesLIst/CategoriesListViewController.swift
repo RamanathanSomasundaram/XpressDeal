@@ -40,7 +40,7 @@ class CategoriesListViewController: UIViewController {
         if(Utilities.checkForInternet())
         {
             Utilities.showLoading()
-            Alamofire.request("http://172.104.181.194/demos/dj/index.php?option=com_djclassifieds&view=items&format=json&cid=\(categoryID!)").responseJSON { response in
+            Alamofire.request("\(CommonHomeAPI)/index.php?option=com_djclassifieds&view=items&format=json&cid=\(categoryID!)").responseJSON { response in
                 if let json = response.result.value {
                     //print("JSON: \(json)") // serialized json response
                     let jsonResult = ((json as AnyObject).value(forKey: "data")! as! [Any])

@@ -14,4 +14,5 @@
 @import SideMenu;
 @import KJExpandableTableTree;
 @import CRNotifications;
+@import MVCarouselCollectionView;
 #endif

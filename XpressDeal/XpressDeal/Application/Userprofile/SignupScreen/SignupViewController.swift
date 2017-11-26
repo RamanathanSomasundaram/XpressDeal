@@ -31,6 +31,13 @@ class SignupViewController: UIViewController {
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
+        let inputFileds = [txt_fullName, txt_Username,txt_Email, txt_confirmEmail,txt_password ,txt_confirmPassword]
+        
+        for fields in inputFileds
+        {
+            fields?.delegate = self
+        }
+        
         // Do any additional setup after loading the view.
     }
     @objc func backHome()
@@ -40,6 +47,16 @@ class SignupViewController: UIViewController {
     
     
     @IBAction func signUpAction(_ sender: Any) {
+        let inputFileds = [txt_fullName, txt_Username,txt_Email, txt_confirmEmail,txt_password ,txt_confirmPassword]
+        for fields in inputFileds
+        {
+            if (fields?.text?.isEmpty)!
+            {
+                Utilities.AnimationShakeTextField(textField: fields!)
+                CRNotifications.showNotification(type: .error, title: "Warning", message: "Required field", dismissDelay: 3.0)
+                return
+            }
+        }
         if(Utilities.checkForInternet())
         {
             Utilities.showLoading()
@@ -83,4 +100,91 @@ class SignupViewController: UIViewController {
     }
     */
 
+}
+
+extension SignupViewController : UITextFieldDelegate
+{
+    /// Implementing a method on the UITextFieldDelegate protocol. This will notify us when something has changed on the textfield
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+            //Name
+            if(textField.tag == 151)
+            {
+                if(!userTextFieldValidation.isValidFullName(UserName: text))
+                {
+                    floatingLabelTextField.errorMessage = "Invalid Name"
+
+                }
+                else
+                {
+                    floatingLabelTextField.errorMessage = ""
+                }
+            }
+            //Username
+            else if(textField.tag == 152)
+            {
+                // Get invalid characters
+                let invalidChars = NSCharacterSet.alphanumerics.inverted
+                
+                // Attempt to find the range of invalid characters in the input string. This returns an optional.
+                let range = text.rangeOfCharacter(from: invalidChars)
+                
+                if range != nil {
+                    floatingLabelTextField.errorMessage = "Invalid UserName"
+                    //return false
+                } else {
+                    // No invalid character, allow the change
+                    //return true
+                    floatingLabelTextField.errorMessage = ""
+                }
+            }
+            //EmailAddress
+            else if(textField.tag == 153)
+            {
+                if(!userTextFieldValidation.isValidEmail(Email: text))
+                {
+                    floatingLabelTextField.errorMessage = "Invalid email"
+                }
+                else
+                {
+                    floatingLabelTextField.errorMessage = ""
+                }
+            }
+            else if(textField.tag == 154)
+            {
+                if(text != txt_Email.text)
+                {
+                    floatingLabelTextField.errorMessage = "Confirm email not matched"
+                }
+                else
+                {
+                    floatingLabelTextField.errorMessage = ""
+                }
+            }
+            //Password
+            else if(textField.tag == 155)
+            {
+                floatingLabelTextField.errorMessage = ""
+            }
+            else if(textField.tag == 156)
+            {
+                if(text != txt_password.text)
+                {
+                    floatingLabelTextField.errorMessage = "Confirm password not matched"
+                }
+                else
+                {
+                    floatingLabelTextField.errorMessage = ""
+                }
+            }
+            else
+            {
+                floatingLabelTextField.errorMessage = ""
+
+            }
+            }
+        }
+        return true
+    }
 }

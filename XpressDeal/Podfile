@@ -9,4 +9,5 @@ pod 'SkyFloatingLabelTextField', '~> 3.0'
 pod 'SideMenu'
 pod 'KJExpandableTableTree'
 pod 'CRNotifications', :git => 'https://github.com/dkcas11/CRNotifications.git', :branch => 'swift3'
+pod 'MVCarouselCollectionView'
 end

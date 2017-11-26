@@ -8,9 +8,9 @@
 
 import UIKit
 
-let navigationMenuAPI = "http://172.104.181.194/demos/dj/index.php?option=com_ajax&group=xdajax&plugin=xpressDeal&type=getChlidCat&format=json"
-let CategoriesListAPI = "http://172.104.181.194/demos/dj/index.php?option=com_ajax&group=xdajax&plugin=xpressDeal&type=getParentCat&format=json"
-let signInAPI = "http://172.104.181.194/demos/dj/index.php?option=com_ajax&group=xdajax&plugin=xpressDeal&type=login&format=json&ignoreMessages=0&"
+let navigationMenuAPI = "\(CommonHomeAPI)/index.php?option=com_ajax&group=xdajax&plugin=xpressDeal&type=getChlidCat&format=json"
+let CategoriesListAPI = "\(CommonHomeAPI)/index.php?option=com_ajax&group=xdajax&plugin=xpressDeal&type=getParentCat&format=json"
+let signInAPI = "\(CommonHomeAPI)/index.php?option=com_ajax&group=xdajax&plugin=xpressDeal&type=login&format=json&ignoreMessages=0&"
 
 class APIManagerClass: NSObject {
 

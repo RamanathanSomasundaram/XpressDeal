@@ -19,6 +19,7 @@
 		0D14E7261FB37D8D007816E1 /* DisplayAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D14E7241FB37D8D007816E1 /* DisplayAdTableViewCell.xib */; };
 		0D1571A11FB4A22800A15B8B /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1571A01FB4A22700A15B8B /* MenuListViewController.swift */; };
 		0D1571A31FB4A32D00A15B8B /* APIManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1571A21FB4A32D00A15B8B /* APIManagerClass.swift */; };
+		0D17708B1FCB203100424D6D /* userTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17708A1FCB203100424D6D /* userTextFieldValidation.swift */; };
 		0D17CFB61FB2032400CBD068 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17CFB51FB2032400CBD068 /* LoginViewController.swift */; };
 		0D17CFB91FB2279D00CBD068 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17CFB81FB2279D00CBD068 /* SignupViewController.swift */; };
 		0D17CFBD1FB231D400CBD068 /* ForgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D17CFBB1FB231D400CBD068 /* ForgetViewController.swift */; };
@@ -58,6 +59,9 @@
 		0D5B82261FAF37BD0057D1C7 /* MarkCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B82251FAF37BD0057D1C7 /* MarkCategoriesViewController.swift */; };
 		0D5B822A1FAF500A0057D1C7 /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B82281FAF500A0057D1C7 /* MarkViewController.swift */; };
 		0D5B822B1FAF500A0057D1C7 /* MarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D5B82291FAF500A0057D1C7 /* MarkViewController.xib */; };
+		0D60705F1FC83BDE0002E4DC /* ImageZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D60705D1FC83BDE0002E4DC /* ImageZoomViewController.swift */; };
+		0D6070641FC884590002E4DC /* ImageviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6070621FC884590002E4DC /* ImageviewCollectionViewCell.swift */; };
+		0D6070651FC884590002E4DC /* ImageviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6070631FC884590002E4DC /* ImageviewCollectionViewCell.xib */; };
 		0D638DCE1FBEC81600816988 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D638DCD1FBEC81600816988 /* CategoriesListViewController.swift */; };
 		0DC356561FC34CF100164AF2 /* ReportAbuseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC356541FC34CF100164AF2 /* ReportAbuseViewController.swift */; };
 		0DC356571FC34CF100164AF2 /* ReportAbuseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC356551FC34CF100164AF2 /* ReportAbuseViewController.xib */; };
@@ -107,6 +111,7 @@
 		0D14E7241FB37D8D007816E1 /* DisplayAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayAdTableViewCell.xib; sourceTree = "<group>"; };
 		0D1571A01FB4A22700A15B8B /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
 		0D1571A21FB4A32D00A15B8B /* APIManagerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerClass.swift; sourceTree = "<group>"; };
+		0D17708A1FCB203100424D6D /* userTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userTextFieldValidation.swift; sourceTree = "<group>"; };
 		0D17CFB51FB2032400CBD068 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0D17CFB81FB2279D00CBD068 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		0D17CFBB1FB231D400CBD068 /* ForgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +162,9 @@
 		0D5B82251FAF37BD0057D1C7 /* MarkCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkCategoriesViewController.swift; sourceTree = "<group>"; };
 		0D5B82281FAF500A0057D1C7 /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
 		0D5B82291FAF500A0057D1C7 /* MarkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkViewController.xib; sourceTree = "<group>"; };
+		0D60705D1FC83BDE0002E4DC /* ImageZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomViewController.swift; sourceTree = "<group>"; };
+		0D6070621FC884590002E4DC /* ImageviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		0D6070631FC884590002E4DC /* ImageviewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageviewCollectionViewCell.xib; sourceTree = "<group>"; };
 		0D638DCD1FBEC81600816988 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
 		0DC356541FC34CF100164AF2 /* ReportAbuseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseViewController.swift; sourceTree = "<group>"; };
 		0DC356551FC34CF100164AF2 /* ReportAbuseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportAbuseViewController.xib; sourceTree = "<group>"; };
@@ -282,6 +290,7 @@
 		0728F8881FACF9310044C0DA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0D1770891FCB200900424D6D /* ValidationTextFileds */,
 				0D5B82151FAEDB200057D1C7 /* Utilities */,
 				0D5B82111FAEDA840057D1C7 /* CardView */,
 			);
@@ -334,6 +343,14 @@
 				0D2D2DC21FC48C1700857794 /* DisplayAdDetailCell */,
 			);
 			path = DisplayAdCell;
+			sourceTree = "<group>";
+		};
+		0D1770891FCB200900424D6D /* ValidationTextFileds */ = {
+			isa = PBXGroup;
+			children = (
+				0D17708A1FCB203100424D6D /* userTextFieldValidation.swift */,
+			);
+			path = ValidationTextFileds;
 			sourceTree = "<group>";
 		};
 		0D17CFB11FB1FEF200CBD068 /* LoginScreen */ = {
@@ -547,6 +564,24 @@
 			path = MarkView;
 			sourceTree = "<group>";
 		};
+		0D60705C1FC83BB70002E4DC /* ImageZoom */ = {
+			isa = PBXGroup;
+			children = (
+				0D60705D1FC83BDE0002E4DC /* ImageZoomViewController.swift */,
+				0D6070611FC884270002E4DC /* ImageViewCell */,
+			);
+			path = ImageZoom;
+			sourceTree = "<group>";
+		};
+		0D6070611FC884270002E4DC /* ImageViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D6070621FC884590002E4DC /* ImageviewCollectionViewCell.swift */,
+				0D6070631FC884590002E4DC /* ImageviewCollectionViewCell.xib */,
+			);
+			path = ImageViewCell;
+			sourceTree = "<group>";
+		};
 		0D638DCC1FBEC7AE00816988 /* CategoriesLIst */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				0DFD72461FC32178006293E2 /* CategoriesDetailViewController.swift */,
+				0D60705C1FC83BB70002E4DC /* ImageZoom */,
 			);
 			path = CategoryDetail;
 			sourceTree = "<group>";
@@ -744,6 +780,7 @@
 				0728F85F1FACF7530044C0DA /* Assets.xcassets in Resources */,
 				0DC9654A1FB8BB7800E8C118 /* ListParentTableViewCell.xib in Resources */,
 				0D14E7261FB37D8D007816E1 /* DisplayAdTableViewCell.xib in Resources */,
+				0D6070651FC884590002E4DC /* ImageviewCollectionViewCell.xib in Resources */,
 				0D4F81201FB7848400826CF4 /* ProfileViewController.xib in Resources */,
 				0D17CFBE1FB231D400CBD068 /* ForgetViewController.xib in Resources */,
 				0D17CFC01FB23EB600CBD068 /* logo.png in Resources */,
@@ -783,6 +820,7 @@
 				"${BUILT_PRODUCTS_DIR}/CRNotifications/CRNotifications.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/KJExpandableTableTree/KJExpandableTableTree.framework",
+				"${BUILT_PRODUCTS_DIR}/MVCarouselCollectionView/MVCarouselCollectionView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
@@ -793,6 +831,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRNotifications.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KJExpandableTableTree.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVCarouselCollectionView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
@@ -849,8 +888,11 @@
 				0D4F81241FB7860600826CF4 /* CreateAdViewController.swift in Sources */,
 				0D5B820D1FAED8A10057D1C7 /* IQToolbar.swift in Sources */,
 				0DC356561FC34CF100164AF2 /* ReportAbuseViewController.swift in Sources */,
+				0D17708B1FCB203100424D6D /* userTextFieldValidation.swift in Sources */,
 				0D5B82081FAED8A10057D1C7 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				0D14E7251FB37D8D007816E1 /* DisplayAdTableViewCell.swift in Sources */,
+				0D6070641FC884590002E4DC /* ImageviewCollectionViewCell.swift in Sources */,
+				0D60705F1FC83BDE0002E4DC /* ImageZoomViewController.swift in Sources */,
 				0728F8931FACFA660044C0DA /* SlideMenuList.swift in Sources */,
 				0D5B81FF1FAED8A10057D1C7 /* IQNSArray+Sort.swift in Sources */,
 				0D5B82091FAED8A10057D1C7 /* IQTextView.swift in Sources */,

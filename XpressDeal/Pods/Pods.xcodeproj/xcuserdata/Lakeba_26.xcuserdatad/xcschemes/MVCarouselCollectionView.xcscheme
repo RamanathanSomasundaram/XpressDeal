@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3E6F28159DA79E1A6936CC0F94CC4FC4'
-               BlueprintName = 'SideMenu'
+               BlueprintIdentifier = '9CECC2113D7B9FC8CBC89112B5ADB1DD'
+               BlueprintName = 'MVCarouselCollectionView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SideMenu.framework'>
+               BuildableName = 'MVCarouselCollectionView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
