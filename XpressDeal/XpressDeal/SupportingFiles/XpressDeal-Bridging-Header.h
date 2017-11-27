@@ -9,10 +9,10 @@
 
 //Swift Modules
 @import Alamofire;
-@import SDWebImage;
+@import Kingfisher;
 @import SkyFloatingLabelTextField;
 @import SideMenu;
 @import KJExpandableTableTree;
-@import CRNotifications;
-@import MVCarouselCollectionView;
+@import ImageSlideshow;
+@import ESTabBarController-swift;
 #endif

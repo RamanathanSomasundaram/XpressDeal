@@ -2,12 +2,14 @@ platform :ios, '9.0'
 
 target 'XpressDeal' do
 use_frameworks!
-pod 'SDWebImage', '~> 4.0'
+pod 'Kingfisher', '~> 4.3'
 pod 'Firebase/Core'
 pod 'Alamofire'
 pod 'SkyFloatingLabelTextField', '~> 3.0'
 pod 'SideMenu'
 pod 'KJExpandableTableTree'
-pod 'CRNotifications', :git => 'https://github.com/dkcas11/CRNotifications.git', :branch => 'swift3'
-pod 'MVCarouselCollectionView'
+pod 'ImageSlideshow', '~> 1.4'
+pod "ESTabBarController-swift"
+pod 'IGLDropDownMenu'
+
 end

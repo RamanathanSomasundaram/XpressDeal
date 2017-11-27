@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var user_btn: UIButton!
     @IBOutlet var lbl_Username: UILabel!
     
+    @IBOutlet var custom_Tabbar: ESTabBar!
     @IBOutlet var fastRating: UIView!
     var userInfo : NSDictionary!
     var rootVC : UIViewController!
@@ -36,11 +37,7 @@ class ProfileViewController: UIViewController {
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(leftMenuAction))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
-//        if(!UserDefaults.standard.bool(forKey: "signIn"))
-//        {
-//        Utilities.callSideMenu(rootVC: self)
-//        }
-
+        
         // Do any additional setup after loading the view.
     }
     @objc func leftMenuAction()

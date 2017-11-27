@@ -46,7 +46,8 @@ class LoginViewController: UIViewController {
             if (fields?.text?.isEmpty)!
             {
                 Utilities.AnimationShakeTextField(textField: fields!)
-                CRNotifications.showNotification(type: .error, title: "Warning", message: "Required field", dismissDelay: 3.0)
+                //CRNotifications.showNotification(type: .error, title: "Warning", message: "Required field", dismissDelay: 3.0)
+                commonAppDelegate.window?.makeToast(message: "Required field", duration: 1.0, position: "bottom" as AnyObject)
                 txt_username.errorMessage = ""
                 txt_password.errorMessage = ""
                 return
@@ -71,7 +72,7 @@ class LoginViewController: UIViewController {
                 {
                     self.txt_password.text = ""
                     self.txt_username.text = ""
-                    CRNotifications.showNotification(type: .error, title: "Login failed", message: self.ErrorMessage, dismissDelay: 1.0)
+                   // CRNotifications.showNotification(type: .error, title: "Login failed", message: self.ErrorMessage, dismissDelay: 1.0)
                     
                 }
                 else
@@ -80,7 +81,8 @@ class LoginViewController: UIViewController {
                     UserDefaults.standard.set(self.loginData, forKey: "Userinfo")
                     UserDefaults.standard.set(true, forKey: "signIn")
                     UserDefaults.standard.synchronize()
-                    CRNotifications.showNotification(type: .success, title: "Success!", message: "You successfully logined", dismissDelay: 1.0)
+                    
+                    //CRNotifications.showNotification(type: .success, title: "Success!", message: "You successfully logined", dismissDelay: 1.0)
                     let profileView = ProfileViewController.init(nibName: "ProfileViewController", root: self)
                     let navController = UINavigationController(rootViewController: profileView)
                     //self.present(profileView, animated: true, completion: nil)

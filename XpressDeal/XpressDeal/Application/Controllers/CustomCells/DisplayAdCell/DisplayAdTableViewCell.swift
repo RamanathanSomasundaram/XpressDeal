@@ -29,9 +29,8 @@ class DisplayAdTableViewCell: UITableViewCell {
     {
         self.catRating.isUserInteractionEnabled = false
         let image : UIImage = UIImage(named: "car")!
-        self.catImg.sd_setShowActivityIndicatorView(true)
-        self.catImg.sd_setIndicatorStyle(.gray)
-        self.catImg.sd_setImage(with: URL(string: "\(CommonHomeAPI)/\(dicValues.value(forKey: "images")! as! String)")! , placeholderImage: image, options: .refreshCached)
+        self.catImg.kf.indicatorType = .activity
+        self.catImg.kf.setImage(with: URL(string: "\(CommonHomeAPI)/\(dicValues.value(forKey: "images")! as! String)")!, placeholder: image , options: [.processor(processor)])
         self.catTitle.text = (dicValues.value(forKey: "title") as! String)
         self.catDesc.text = (dicValues.value(forKey: "description") as! String)
         self.catStart.text = (dicValues.value(forKey: "start_date") as! String)

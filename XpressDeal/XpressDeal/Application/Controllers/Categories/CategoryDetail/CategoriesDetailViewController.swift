@@ -87,10 +87,10 @@ class CategoriesDetailViewController: UIViewController {
     }
     @objc func imageZoom()
     {
-        let imageZoom = self.storyboard?.instantiateViewController(withIdentifier: "ImageZoomViewController") as! ImageZoomViewController
+        let imageZoom = self.storyboard?.instantiateViewController(withIdentifier: "FullImageViewController") as! FullImageViewController
         imageZoom.imagetitle = self.lbl_titleAd.text
         imageZoom.imageArray = (self.displayDetailDict.value(forKey: "item_images")! as! NSArray)
-        self.present(imageZoom, animated: true, completion: nil)
+        //self.present(imageZoom, animated: true, completion: nil)
         self.navigationController?.pushViewController(imageZoom, animated: true)
     }
     
@@ -129,9 +129,8 @@ extension CategoriesDetailViewController : UITableViewDelegate, UITableViewDataS
         let imageArray = (self.displayDetailDict.value(forKey: "item_images")! as! NSArray)
         let imageDict = (imageArray.object(at: indexPath.row) as! NSDictionary)
         Tbl_detail.backgroundColor = UIColor.black
-        cell.img_detail.sd_setShowActivityIndicatorView(true)
-        cell.img_detail.sd_setIndicatorStyle(.gray)
-        cell.img_detail.sd_setImage(with: URL(string: "http://172.104.181.194/demos/dj\((imageDict.value(forKey: "thumb_b") as! String))") , placeholderImage: image, options: .refreshCached)
+        cell.img_detail.kf.indicatorType = .activity
+        cell.img_detail.kf.setImage(with: URL(string: "http://172.104.181.194/demos/dj\((imageDict.value(forKey: "thumb_b") as! String))"), placeholder: image , options: [.processor(processor)])
         let dicValues = (self.displayDetailDict.value(forKey: "item")! as! NSDictionary)
         cell.imgClick.addTarget(self, action: #selector(imageZoom), for: .touchUpInside)
         cell.createTitle.text = "Created By : \(dicValues.value(forKey: "username")!)"

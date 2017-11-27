@@ -53,7 +53,7 @@ class SignupViewController: UIViewController {
             if (fields?.text?.isEmpty)!
             {
                 Utilities.AnimationShakeTextField(textField: fields!)
-                CRNotifications.showNotification(type: .error, title: "Warning", message: "Required field", dismissDelay: 3.0)
+                //CRNotifications.showNotification(type: .error, title: "Warning", message: "Required field", dismissDelay: 3.0)
                 return
             }
         }
@@ -71,14 +71,14 @@ class SignupViewController: UIViewController {
                 upload.responseJSON { response in
                     if let JSON = response.result.value {
                         print("JSON: \(JSON)")
-                        CRNotifications.showNotification(type: .success, title: "Success!", message: "you successfully signup", dismissDelay: 1.0)
+                        //CRNotifications.showNotification(type: .success, title: "Success!", message: "you successfully signup", dismissDelay: 1.0)
                         Utilities.hideLoading()
                         self.backHome()
                     }
                 }
             case .failure(let encodingError):
                 print(encodingError)
-                CRNotifications.showNotification(type: .error, title: "SignUp failed", message: "Invalid Datas", dismissDelay: 1.0)
+                //CRNotifications.showNotification(type: .error, title: "SignUp failed", message: "Invalid Datas", dismissDelay: 1.0)
             }
         }
         }

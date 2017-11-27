@@ -23,9 +23,8 @@ class ListParentTableViewCell: UITableViewCell {
     func configureCell(dicValues : NSDictionary)
     {
             let image : UIImage = UIImage(named: "login")!
-            appIcon.sd_setShowActivityIndicatorView(true)
-            appIcon.sd_setIndicatorStyle(.gray)
-            appIcon.sd_setImage(with: URL(string: (dicValues.value(forKey: "app_icon")! as! String))! , placeholderImage: image, options: .refreshCached)
+            self.appIcon.kf.indicatorType = .activity
+            self.appIcon.kf.setImage(with: URL(string: (dicValues.value(forKey: "app_icon")! as! String))!, placeholder: image , options: [.processor(processor)])
             menuTitle.text = (dicValues.value(forKey: "name") as! String)
             menuTitle.adjustsFontSizeToFitWidth = true
             menuTitle.numberOfLines = 2

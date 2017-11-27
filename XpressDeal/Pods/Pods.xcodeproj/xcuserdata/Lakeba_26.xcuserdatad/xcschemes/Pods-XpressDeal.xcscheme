@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A7AE08CF8F4A76C2AED75616B6610312"
+               BlueprintIdentifier = "2BEFE321F512DFFECA52E82DFC419EB9"
                BuildableName = "Pods_XpressDeal.framework"
                BlueprintName = "Pods-XpressDeal"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A7AE08CF8F4A76C2AED75616B6610312"
+            BlueprintIdentifier = "2BEFE321F512DFFECA52E82DFC419EB9"
             BuildableName = "Pods_XpressDeal.framework"
             BlueprintName = "Pods-XpressDeal"
             ReferencedContainer = "container:Pods.xcodeproj">

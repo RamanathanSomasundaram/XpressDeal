@@ -15,6 +15,9 @@
 		0728F86D1FACF7530044C0DA /* XpressDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0728F86C1FACF7530044C0DA /* XpressDealTests.swift */; };
 		0728F8781FACF7530044C0DA /* XpressDealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0728F8771FACF7530044C0DA /* XpressDealUITests.swift */; };
 		0728F8931FACFA660044C0DA /* SlideMenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0728F8921FACFA660044C0DA /* SlideMenuList.swift */; };
+		0D0173001FCBEE7E008DFA80 /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0172FF1FCBEE7E008DFA80 /* HRToast+UIView.swift */; };
+		0D01730D1FCC4391008DFA80 /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D01730C1FCC4391008DFA80 /* FullImageViewController.swift */; };
+		0D01730F1FCC80D4008DFA80 /* KingfisherSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D01730E1FCC80D4008DFA80 /* KingfisherSource.swift */; };
 		0D14E7251FB37D8D007816E1 /* DisplayAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D14E7231FB37D8D007816E1 /* DisplayAdTableViewCell.swift */; };
 		0D14E7261FB37D8D007816E1 /* DisplayAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D14E7241FB37D8D007816E1 /* DisplayAdTableViewCell.xib */; };
 		0D1571A11FB4A22800A15B8B /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1571A01FB4A22700A15B8B /* MenuListViewController.swift */; };
@@ -59,9 +62,6 @@
 		0D5B82261FAF37BD0057D1C7 /* MarkCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B82251FAF37BD0057D1C7 /* MarkCategoriesViewController.swift */; };
 		0D5B822A1FAF500A0057D1C7 /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B82281FAF500A0057D1C7 /* MarkViewController.swift */; };
 		0D5B822B1FAF500A0057D1C7 /* MarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D5B82291FAF500A0057D1C7 /* MarkViewController.xib */; };
-		0D60705F1FC83BDE0002E4DC /* ImageZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D60705D1FC83BDE0002E4DC /* ImageZoomViewController.swift */; };
-		0D6070641FC884590002E4DC /* ImageviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6070621FC884590002E4DC /* ImageviewCollectionViewCell.swift */; };
-		0D6070651FC884590002E4DC /* ImageviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D6070631FC884590002E4DC /* ImageviewCollectionViewCell.xib */; };
 		0D638DCE1FBEC81600816988 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D638DCD1FBEC81600816988 /* CategoriesListViewController.swift */; };
 		0DC356561FC34CF100164AF2 /* ReportAbuseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC356541FC34CF100164AF2 /* ReportAbuseViewController.swift */; };
 		0DC356571FC34CF100164AF2 /* ReportAbuseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DC356551FC34CF100164AF2 /* ReportAbuseViewController.xib */; };
@@ -107,6 +107,9 @@
 		0728F8791FACF7530044C0DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0728F88E1FACFA200044C0DA /* XpressDeal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XpressDeal-Bridging-Header.h"; sourceTree = "<group>"; };
 		0728F8921FACFA660044C0DA /* SlideMenuList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuList.swift; sourceTree = "<group>"; };
+		0D0172FF1FCBEE7E008DFA80 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
+		0D01730C1FCC4391008DFA80 /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
+		0D01730E1FCC80D4008DFA80 /* KingfisherSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KingfisherSource.swift; path = "../../../../../../../Downloads/ImageSlideshow-master 2/ImageSlideshow/Classes/InputSources/KingfisherSource.swift"; sourceTree = "<group>"; };
 		0D14E7231FB37D8D007816E1 /* DisplayAdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAdTableViewCell.swift; sourceTree = "<group>"; };
 		0D14E7241FB37D8D007816E1 /* DisplayAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayAdTableViewCell.xib; sourceTree = "<group>"; };
 		0D1571A01FB4A22700A15B8B /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
@@ -162,9 +165,6 @@
 		0D5B82251FAF37BD0057D1C7 /* MarkCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkCategoriesViewController.swift; sourceTree = "<group>"; };
 		0D5B82281FAF500A0057D1C7 /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
 		0D5B82291FAF500A0057D1C7 /* MarkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkViewController.xib; sourceTree = "<group>"; };
-		0D60705D1FC83BDE0002E4DC /* ImageZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomViewController.swift; sourceTree = "<group>"; };
-		0D6070621FC884590002E4DC /* ImageviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageviewCollectionViewCell.swift; sourceTree = "<group>"; };
-		0D6070631FC884590002E4DC /* ImageviewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageviewCollectionViewCell.xib; sourceTree = "<group>"; };
 		0D638DCD1FBEC81600816988 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
 		0DC356541FC34CF100164AF2 /* ReportAbuseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAbuseViewController.swift; sourceTree = "<group>"; };
 		0DC356551FC34CF100164AF2 /* ReportAbuseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportAbuseViewController.xib; sourceTree = "<group>"; };
@@ -290,6 +290,8 @@
 		0728F8881FACF9310044C0DA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0D0173031FCC1F07008DFA80 /* KingFisherSource */,
+				0D0172FE1FCBEE7E008DFA80 /* Toast */,
 				0D1770891FCB200900424D6D /* ValidationTextFileds */,
 				0D5B82151FAEDB200057D1C7 /* Utilities */,
 				0D5B82111FAEDA840057D1C7 /* CardView */,
@@ -333,6 +335,22 @@
 				0D1571A01FB4A22700A15B8B /* MenuListViewController.swift */,
 			);
 			path = MenuList;
+			sourceTree = "<group>";
+		};
+		0D0172FE1FCBEE7E008DFA80 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				0D0172FF1FCBEE7E008DFA80 /* HRToast+UIView.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		0D0173031FCC1F07008DFA80 /* KingFisherSource */ = {
+			isa = PBXGroup;
+			children = (
+				0D01730E1FCC80D4008DFA80 /* KingfisherSource.swift */,
+			);
+			path = KingFisherSource;
 			sourceTree = "<group>";
 		};
 		0D14E7221FB37D54007816E1 /* DisplayAdCell */ = {
@@ -567,19 +585,9 @@
 		0D60705C1FC83BB70002E4DC /* ImageZoom */ = {
 			isa = PBXGroup;
 			children = (
-				0D60705D1FC83BDE0002E4DC /* ImageZoomViewController.swift */,
-				0D6070611FC884270002E4DC /* ImageViewCell */,
+				0D01730C1FCC4391008DFA80 /* FullImageViewController.swift */,
 			);
 			path = ImageZoom;
-			sourceTree = "<group>";
-		};
-		0D6070611FC884270002E4DC /* ImageViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				0D6070621FC884590002E4DC /* ImageviewCollectionViewCell.swift */,
-				0D6070631FC884590002E4DC /* ImageviewCollectionViewCell.xib */,
-			);
-			path = ImageViewCell;
 			sourceTree = "<group>";
 		};
 		0D638DCC1FBEC7AE00816988 /* CategoriesLIst */ = {
@@ -780,7 +788,6 @@
 				0728F85F1FACF7530044C0DA /* Assets.xcassets in Resources */,
 				0DC9654A1FB8BB7800E8C118 /* ListParentTableViewCell.xib in Resources */,
 				0D14E7261FB37D8D007816E1 /* DisplayAdTableViewCell.xib in Resources */,
-				0D6070651FC884590002E4DC /* ImageviewCollectionViewCell.xib in Resources */,
 				0D4F81201FB7848400826CF4 /* ProfileViewController.xib in Resources */,
 				0D17CFBE1FB231D400CBD068 /* ForgetViewController.xib in Resources */,
 				0D17CFC01FB23EB600CBD068 /* logo.png in Resources */,
@@ -817,22 +824,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-XpressDeal/Pods-XpressDeal-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CRNotifications/CRNotifications.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IGLDropDownMenu/IGLDropDownMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/KJExpandableTableTree/KJExpandableTableTree.framework",
-				"${BUILT_PRODUCTS_DIR}/MVCarouselCollectionView/MVCarouselCollectionView.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRNotifications.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGLDropDownMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KJExpandableTableTree.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVCarouselCollectionView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 			);
@@ -891,8 +900,6 @@
 				0D17708B1FCB203100424D6D /* userTextFieldValidation.swift in Sources */,
 				0D5B82081FAED8A10057D1C7 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				0D14E7251FB37D8D007816E1 /* DisplayAdTableViewCell.swift in Sources */,
-				0D6070641FC884590002E4DC /* ImageviewCollectionViewCell.swift in Sources */,
-				0D60705F1FC83BDE0002E4DC /* ImageZoomViewController.swift in Sources */,
 				0728F8931FACFA660044C0DA /* SlideMenuList.swift in Sources */,
 				0D5B81FF1FAED8A10057D1C7 /* IQNSArray+Sort.swift in Sources */,
 				0D5B82091FAED8A10057D1C7 /* IQTextView.swift in Sources */,
@@ -920,10 +927,13 @@
 				0D638DCE1FBEC81600816988 /* CategoriesListViewController.swift in Sources */,
 				0D1571A31FB4A32D00A15B8B /* APIManagerClass.swift in Sources */,
 				0D5B822A1FAF500A0057D1C7 /* MarkViewController.swift in Sources */,
+				0D01730D1FCC4391008DFA80 /* FullImageViewController.swift in Sources */,
 				0D5B82131FAEDA920057D1C7 /* CardView.swift in Sources */,
 				0D17CFBD1FB231D400CBD068 /* ForgetViewController.swift in Sources */,
+				0D0173001FCBEE7E008DFA80 /* HRToast+UIView.swift in Sources */,
 				0D5B82061FAED8A10057D1C7 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				0DC9654E1FB8BBA400E8C118 /* ListChildTableViewCell.swift in Sources */,
+				0D01730F1FCC80D4008DFA80 /* KingfisherSource.swift in Sources */,
 				0D4F811B1FB7800B00826CF4 /* CosmosDistrib.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
