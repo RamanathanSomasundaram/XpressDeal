@@ -108,8 +108,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func AdvanceSearchAction(_ sender: Any) {
         
-        let createAd = CreateAdViewController.init(nibName: "CreateAdViewController", root: self)
-        self.navigationController?.pushViewController(createAd, animated: true)
+        
     }
     
     

@@ -10,6 +10,10 @@ import UIKit
 import SystemConfiguration
 var commonAppDelegate : AppDelegate! = UIApplication.shared.delegate as! AppDelegate
 var CommonHomeAPI = "http://172.104.181.194/demos/dj"
+let userData = (UserDefaults.standard.dictionary(forKey: "profile")! as NSDictionary)
+let credentialData = "\((userData.value(forKey: "Username") as! String)):\((userData.value(forKey: "Password") as! String))".data(using: String.Encoding.utf8)
+let base64Credentials = credentialData?.base64EncodedString()
+let headers = ["Authorization": "Basic \(base64Credentials!)"]
 let processor = RoundCornerImageProcessor(cornerRadius: 20)
 //macros
 extension UIColor {

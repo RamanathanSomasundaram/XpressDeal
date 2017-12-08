@@ -17,10 +17,13 @@ class CategoriesDetailViewController: UIViewController {
     @IBOutlet var lbl_special: UILabel!
     @IBOutlet var lbl_location: UILabel!
     @IBOutlet var userReviewView: UIView!
-    @IBOutlet var lbl_desc: UILabel!
-    
+    @IBOutlet var txtView_Desc: UITextView!
+    var passingItemsDict : NSDictionary!
+    @IBOutlet var btn_bids: UIButton!
+    @IBOutlet var btn_buynow: UIButton!
     var displayDetailDict : NSDictionary!
     var detailID : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         displayDetailDict = NSDictionary()
@@ -50,15 +53,31 @@ class CategoriesDetailViewController: UIViewController {
             Utilities.showLoading()
             Alamofire.request("\(CommonHomeAPI)/index.php?option=com_djclassifieds&view=item&format=json&id=\(detailID!)").responseJSON { response in
                 if let json = response.result.value {
-                    //print("JSON: \(json)") // serialized json response
                     let jsonResult = ((json as AnyObject).value(forKey: "data")! as! NSDictionary)
                     self.displayDetailDict = jsonResult
                 }
                 let dispatchTime = DispatchTime.now()
                 DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
                     let dicValues = (self.displayDetailDict.value(forKey: "item")! as! NSDictionary)
+                    self.passingItemsDict = dicValues
                     self.lbl_titleAd.text =  (dicValues.value(forKey:"name") as! String)
-                    self.lbl_desc.text = (dicValues.value(forKey:"description") as! String)
+                    self.txtView_Desc.text = (dicValues.value(forKey:"description") as! String)
+                    if((self.displayDetailDict.value(forKey: "bids")! as! NSArray).count > 0)
+                    {
+                        self.btn_bids.isHidden = false
+                    }
+                    else
+                    {
+                        self.btn_bids.isHidden = true
+                    }//quantity
+                    if(((dicValues.value(forKey: "quantity") as! NSString).integerValue) > 0)
+                    {
+                        self.btn_buynow.isHidden = false
+                    }
+                    else
+                    {
+                        self.btn_buynow.isHidden = true
+                    }
                     self.Tbl_detail.reloadData()
                     Utilities.hideLoading()
                 })
@@ -81,17 +100,56 @@ class CategoriesDetailViewController: UIViewController {
         
     }
     @IBAction func reportAction(_ sender: Any) {
+        if(UserDefaults.standard.bool(forKey: "UserLogin"))
+        {
         let report = ReportAbuseViewController.init(nibName: "ReportAbuseViewController", root: self)
+            report.reportDict = ["item_id" : (passingItemsDict.value(forKey: "id") as! String) , "cid" : (passingItemsDict.value(forKey: "cat_id") as! String)]
             report.modalPresentationStyle = .overCurrentContext
         self.present(report, animated: true, completion: nil)
+        }
+        else
+        {
+            let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.navigationController?.pushViewController(login, animated: true)
+        }
     }
     @objc func imageZoom()
     {
         let imageZoom = self.storyboard?.instantiateViewController(withIdentifier: "FullImageViewController") as! FullImageViewController
         imageZoom.imagetitle = self.lbl_titleAd.text
         imageZoom.imageArray = (self.displayDetailDict.value(forKey: "item_images")! as! NSArray)
-        //self.present(imageZoom, animated: true, completion: nil)
         self.navigationController?.pushViewController(imageZoom, animated: true)
+    }
+    
+    @IBAction func bidsAction(_ sender: Any) {
+        if(UserDefaults.standard.bool(forKey: "UserLogin"))
+        {
+        let bids = self.storyboard?.instantiateViewController(withIdentifier: "BidsViewController") as! BidsViewController
+        bids.bidsDict = (self.displayDetailDict.value(forKey: "bids")! as! NSArray)
+        bids.bidMinMax = "Min --> \((passingItemsDict.value(forKey: "bid_min") as! String))        Max --> \((passingItemsDict.value(forKey: "bid_max") as! String))"
+        self.navigationController?.pushViewController(bids, animated: true)
+        }
+        else
+        {
+            let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.navigationController?.pushViewController(login, animated: true)
+        }
+    }
+    
+    
+    @IBAction func buyNowAction(_ sender: Any) {
+        if(UserDefaults.standard.bool(forKey: "UserLogin"))
+        {
+            let Buynow = BuynowViewController.init(nibName: "BuynowViewController", root: self)
+            Buynow.modalPresentationStyle = .overCurrentContext
+            Buynow.buyDict = ["Price" : (passingItemsDict.value(forKey: "price") as! String) , "Quantity" : (passingItemsDict.value(forKey: "quantity") as! String) , "item_id" : (passingItemsDict.value(forKey: "id") as! String) , "cid" : (passingItemsDict.value(forKey: "cat_id") as! String)]
+            self.present(Buynow, animated: true, completion: nil)
+        }
+        else
+        {
+            let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.navigationController?.pushViewController(login, animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {

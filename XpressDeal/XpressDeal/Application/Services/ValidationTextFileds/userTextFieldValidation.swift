@@ -23,7 +23,7 @@ class userTextFieldValidation: NSObject {
     //MARK: - Check Validate Username
     class func isValidFullName(UserName : String) -> Bool
     {
-        let RegEx = "\\A\\w{3,18}\\z"
+        let RegEx = "\\A\\w{2,18}\\z"
         let Test = NSPredicate(format:"SELF MATCHES %@", RegEx)
         return Test.evaluate(with: UserName)
     }

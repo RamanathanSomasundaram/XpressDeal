@@ -14,5 +14,4 @@
 @import SideMenu;
 @import KJExpandableTableTree;
 @import ImageSlideshow;
-@import ESTabBarController-swift;
 #endif

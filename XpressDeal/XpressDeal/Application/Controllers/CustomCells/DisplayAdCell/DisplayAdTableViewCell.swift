@@ -35,7 +35,7 @@ class DisplayAdTableViewCell: UITableViewCell {
         self.catDesc.text = (dicValues.value(forKey: "description") as! String)
         self.catStart.text = (dicValues.value(forKey: "start_date") as! String)
         self.catEnd.text = (dicValues.value(forKey: "exp_date") as! String)
-        if((dicValues.value(forKey: "rating") as AnyObject).isKind(of: NSString.self))
+        if((dicValues.value(forKey: "rating") as? String) != nil)
         {
         self.catRating.rating = (((dicValues.value(forKey: "rating") as! NSString).doubleValue) / 2.0)
         }
@@ -54,7 +54,6 @@ class DisplayAdTableViewCell: UITableViewCell {
             displayLabel.isHidden = false
             displayLabel.text = (dicValues.value(forKey: "display") as! String)
         }
-        self.catImg.layer.cornerRadius = 8
         Utilities.viewBorderColor(ContentView: CellView)
 
     }

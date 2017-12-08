@@ -9,7 +9,6 @@ pod 'SkyFloatingLabelTextField', '~> 3.0'
 pod 'SideMenu'
 pod 'KJExpandableTableTree'
 pod 'ImageSlideshow', '~> 1.4'
-pod "ESTabBarController-swift"
 pod 'IGLDropDownMenu'
 
 end

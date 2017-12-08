@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.5.0)
-  - ESTabBarController-swift (2.5)
   - Firebase/Core (4.0.3):
     - FirebaseAnalytics (= 4.0.2)
     - FirebaseCore (= 4.0.3)
@@ -26,7 +25,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - ESTabBarController-swift
   - Firebase/Core
   - IGLDropDownMenu
   - ImageSlideshow (~> 1.4)
@@ -37,7 +35,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  ESTabBarController-swift: 8daa432f2a9be8ebd25101dc46c84472fd760512
   Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
@@ -50,6 +47,6 @@ SPEC CHECKSUMS:
   SideMenu: a447554ae5c982e8077666389e1c8b0c8656e065
   SkyFloatingLabelTextField: 4e2d2f7160af660ed1da6bb9d0027b5c474b4b79
 
-PODFILE CHECKSUM: ed0059ab5bbf6b29f78305e75f539d02ea0d5576
+PODFILE CHECKSUM: b642cde08fd214057fa559c8e48755ef6c2dfbd7
 
 COCOAPODS: 1.3.1
