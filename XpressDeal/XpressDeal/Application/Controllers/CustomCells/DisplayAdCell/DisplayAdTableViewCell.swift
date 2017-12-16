@@ -54,6 +54,7 @@ class DisplayAdTableViewCell: UITableViewCell {
             displayLabel.isHidden = false
             displayLabel.text = (dicValues.value(forKey: "display") as! String)
         }
+        self.catImg.backgroundColor = UIColor.clear
         Utilities.viewBorderColor(ContentView: CellView)
 
     }

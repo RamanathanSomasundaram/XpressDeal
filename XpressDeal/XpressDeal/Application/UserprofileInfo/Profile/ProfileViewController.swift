@@ -10,30 +10,46 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet var user_btn: UIButton!
     @IBOutlet var lbl_Username: UILabel!
-    
-    @IBOutlet var fastRating: UIView!
+    @IBOutlet var img_User: UIImageView!
     var userInfo : NSDictionary!
     var rootVC : UIViewController!
-    
+    @IBOutlet var tbl_user: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userInfo = UserDefaults.standard.dictionary(forKey: "Userinfo")! as NSDictionary
         print("User Info : \(userInfo)")
         //user_btn.titleLabel?.text = (userInfo.value(forKey: "username") as! String)
-        //lbl_Username.text = (userInfo.value(forKey: "fullname") as! String)
-        self.navigationController?.navigationItem.hidesBackButton = true
+        lbl_Username.text = (userInfo.value(forKey: "username") as! String)
         Utilities.homeNavigationMenu(rootVC:self)
+        self.navigationController?.navigationItem.hidesBackButton = true
+        //menu
+        if(UserDefaults.standard.bool(forKey: "menu"))
+        {
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(leftMenuAction))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
+        }
+        else
+        {
+            let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
+            flipButton.tintColor = UIColor.white
+            self.navigationItem.leftBarButtonItem = flipButton
+        }
         
         // Do any additional setup after loading the view.
     }
     @objc func leftMenuAction()
     {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
+    }
+    @objc func backHome()
+    {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func UserSettings(_ sender: Any) {
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,4 +68,27 @@ class ProfileViewController: UIViewController {
     }
     */
 
+}
+
+extension ProfileViewController : UITableViewDelegate,UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "profilecell")
+        if(cell == nil)
+        {
+            cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: "profilecell")
+        }
+        cell?.textLabel?.textColor = UIColor.white
+        cell?.accessoryType = .disclosureIndicator
+         cell?.imageView?.image = UIImage(named: "login.png")
+        cell?.textLabel?.text = "welcome"
+        //cell?.contentView.backgroundColor = UIColor.black
+        cell?.backgroundColor = UIColor.black
+        return cell!
+    }
 }

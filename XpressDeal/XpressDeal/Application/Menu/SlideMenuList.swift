@@ -14,17 +14,15 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var menuTitleList = NSMutableArray()
     
     @IBOutlet var loginImage: UIImageView!
-    @IBOutlet var loginTopViewConstraint: NSLayoutConstraint!
     @IBOutlet var loginBtn: UIButton!
-    @IBOutlet var userName: UILabel!
-    @IBOutlet var userProfileImage: UIImageView!
-    @IBOutlet var emailID: UILabel!
+
     
     override func viewDidLoad() {
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         menuTitleList = commonAppDelegate.categoriesListArray
         tbl_schoolMenu.backgroundColor = UIColor.black
         Utilities.homeNavigationMenu(rootVC:self)
+        navigationItem.titleView = nil
         tbl_schoolMenu.tableFooterView = UIView()
         self.tbl_schoolMenu.register(UINib.init(nibName: "ListParentTableViewCell", bundle: nil), forCellReuseIdentifier: "parentCell")
        
@@ -33,20 +31,13 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
     override func viewWillAppear(_ animated: Bool) {
         if(!UserDefaults.standard.bool(forKey: "UserLogin"))
         {
-            loginTopViewConstraint.constant = -80
+
             loginImage.image = UIImage(named: "login.png")
             loginBtn.setTitle("Login", for: .normal)
         }
         else
         {
-            loginTopViewConstraint.constant = 0
-            let userInfo = UserDefaults.standard.dictionary(forKey: "Userinfo")! as NSDictionary
-            print("User Info : \(userInfo)")
-            userName.text = (userInfo.value(forKey: "username") as! String)
-            emailID.text = (userInfo.value(forKey: "email") as! String)
-            userProfileImage.layer.cornerRadius = (userProfileImage.frame.size.width * userProfileImage.frame.size.height) / 2
-            userProfileImage.image = UIImage(named: "circleUser.png")
-            loginImage.image = UIImage(named: "login.png")
+           loginImage.image = UIImage(named: "login.png")
             loginBtn.setTitle("Logout", for: .normal)
         }
     }
@@ -78,7 +69,7 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
     @IBAction func LoginAction(_ sender: Any) {
         if(!UserDefaults.standard.bool(forKey: "UserLogin"))
         {
-            UserDefaults.standard.set("true", forKey: "menu")
+            UserDefaults.standard.set(true, forKey: "menu1")
             UserDefaults.standard.synchronize()
             let login = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             self.navigationController?.pushViewController(login, animated: true)
@@ -91,6 +82,8 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
                 UserDefaults.standard.set(false, forKey: "UserLogin")
                 UserDefaults.standard.set(nil, forKey: "Userinfo")
                 UserDefaults.standard.set(nil, forKey: "profile")
+                UserDefaults.standard.set(false, forKey: "menu1")
+                UserDefaults.standard.set(false, forKey: "menu")
                 UserDefaults.standard.synchronize()
                 //self.viewWillAppear(false)
                 let home = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController

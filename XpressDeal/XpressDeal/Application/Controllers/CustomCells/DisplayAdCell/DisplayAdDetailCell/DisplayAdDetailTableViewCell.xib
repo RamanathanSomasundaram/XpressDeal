@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -127,12 +128,13 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="kEK-gv-YqX" secondAttribute="bottom" constant="5" id="C03-97-Cyt"/>
-                    <constraint firstItem="kEK-gv-YqX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Vbj-Xp-Oi5"/>
-                    <constraint firstItem="kEK-gv-YqX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ZcN-Ok-M8D"/>
-                    <constraint firstAttribute="trailing" secondItem="kEK-gv-YqX" secondAttribute="trailing" constant="5" id="q6V-3Q-SnV"/>
+                    <constraint firstItem="kEK-gv-YqX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="T5e-2S-XuD"/>
+                    <constraint firstAttribute="trailing" secondItem="kEK-gv-YqX" secondAttribute="trailing" constant="5" id="ggg-Mf-Mql"/>
+                    <constraint firstItem="kEK-gv-YqX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="s99-Ge-7kk"/>
+                    <constraint firstAttribute="bottom" secondItem="kEK-gv-YqX" secondAttribute="bottom" constant="5" id="v8I-Zv-2vP"/>
                 </constraints>
             </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="4fo-oD-XlS"/>
             <connections>
                 <outlet property="ContentView" destination="kEK-gv-YqX" id="rx3-2n-KIf"/>
                 <outlet property="Lbl_phone" destination="P51-wK-k3f" id="seb-CE-2rr"/>

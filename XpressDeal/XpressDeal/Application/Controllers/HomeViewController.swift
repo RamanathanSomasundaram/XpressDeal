@@ -49,20 +49,51 @@ class HomeViewController: UIViewController {
     //Navigation controller setup
     func setupNavigationController()
     {
-        self.title = "XpressDeal"
-        Utilities.homeNavigationMenu(rootVC:self)
+        Utilities.homeNavigationMenu(rootVC: self)
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(leftMenuAction))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
-        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "search.png"), style: .plain, target: self, action: #selector(search))
-        flipRightButton.tintColor = UIColor.white
-        self.navigationItem.rightBarButtonItem = flipRightButton
+        if(UserDefaults.standard.bool(forKey: "UserLogin"))
+        {
+            let container = UIView.init(frame: CGRect(x: 0, y: 0, width: 70, height: 40))
+            let UserProfile = UIButton.init(frame: CGRect(x: 0, y: 4, width: 30, height: 30))
+            let img = UIImage (named: "user")
+            UserProfile .setImage(img, for: .normal)
+            UserProfile.addTarget(self, action: #selector(profileView), for: .touchUpInside)
+            container.addSubview(UserProfile)
+            let searchButton=UIButton.init(frame: CGRect(x: 40, y: 4, width: 30, height: 30))
+            let imag = UIImage(named: "search.png")
+            searchButton .setImage(imag, for: .normal)
+            searchButton.addTarget(self, action: #selector(search), for: .touchUpInside)
+            container.addSubview(searchButton)
+            container .layoutIfNeeded()
+            container.backgroundColor = UIColor.clear
+            let item = UIBarButtonItem.init(customView: container)
+            let arrBtns = NSArray.init(object: item)
+            self.navigationItem.rightBarButtonItems=(arrBtns as! [UIBarButtonItem])
+            
+        }
+        else
+        {
+            let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "search.png"), style: .plain, target: self, action: #selector(search))
+            flipRightButton.tintColor = UIColor.white
+            self.navigationItem.rightBarButtonItem = flipRightButton
+        }
+        
     }
 
     @objc func leftMenuAction()
     {
          present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
+    @objc func profileView()
+    {
+        UserDefaults.standard.set(false, forKey: "menu")
+        UserDefaults.standard.synchronize()
+        let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        self.navigationController?.pushViewController(profileView, animated: true)
+    }
+    
     func loadCategoriesList(URLString : String)    {
         if(Utilities.checkForInternet())
         {

@@ -16,25 +16,34 @@ class CategoriesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         categoriesListArray = NSMutableArray()
-        self.title = "XpressDeal"
         self.tbl_CategoryList.register(UINib.init(nibName: "DisplayAdTableViewCell", bundle: nil), forCellReuseIdentifier: "DisplayCell")
         self.loadCategoriesList()
         tbl_CategoryList.backgroundColor = UIColor.black
         // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.barTintColor = navigationbarColor
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        Utilities.homeNavigationMenu(rootVC: self)
         self.navigationItem.hidesBackButton = true
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = flipButton
+        if(UserDefaults.standard.bool(forKey: "UserLogin"))
+        {
+        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "user"), style: .plain, target: self, action: #selector(profileView))
+        flipRightButton.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem = flipRightButton
+        }
         // Do any additional setup after loading the view.
     }
     @objc func backHome()
     {
         self.navigationController?.popViewController(animated: true)
     }
-    
+    @objc func profileView()
+    {
+        UserDefaults.standard.set(false, forKey: "menu")
+        UserDefaults.standard.synchronize()
+        let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        self.navigationController?.pushViewController(profileView, animated: true)
+    }
     func loadCategoriesList()
     {
         if(Utilities.checkForInternet())

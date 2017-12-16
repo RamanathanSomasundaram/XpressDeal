@@ -16,12 +16,13 @@ class LoginViewController: UIViewController {
     @IBOutlet var txt_password: SkyFloatingLabelTextField!
     var ErrorMessage : String!
 
+    @IBOutlet var img_logo: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         signin_Btn.layer.cornerRadius = signin_Btn.frame.size.height / 2
         //NavigationController background color
-        self.title = "XpressDeal"
-        if(UserDefaults.standard.bool(forKey: "menu"))
+        //self.title = "XpressDeal"
+        if(UserDefaults.standard.bool(forKey: "menu1"))
         {
         self.navigationController?.navigationItem.hidesBackButton = true
         Utilities.homeNavigationMenu(rootVC: self)
@@ -33,9 +34,7 @@ class LoginViewController: UIViewController {
         }
         else
         {
-            self.navigationController?.navigationBar.barTintColor = navigationbarColor
-            self.navigationController?.navigationBar.isTranslucent = false
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+            Utilities.homeNavigationMenu(rootVC: self)
             self.navigationItem.hidesBackButton = true
             let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
             flipButton.tintColor = UIColor.white
@@ -101,21 +100,32 @@ class LoginViewController: UIViewController {
                 {
                     let userProfile = ["Username": self.txt_username.text! , "Password": self.txt_password.text!]
                     UserDefaults.standard.set(true, forKey: "UserLogin");
-                    UserDefaults.standard.set(self.loginData, forKey: "Userinfo")
                     UserDefaults.standard.set(userProfile, forKey: "profile")
                     UserDefaults.standard.set(true, forKey: "signIn")
                     commonAppDelegate.window?.makeToast(message: successMessage, duration: 1.0, position: "center" as AnyObject)//menu
-                    if(UserDefaults.standard.bool(forKey: "menu"))
-                    {
-                    UserDefaults.standard.set(false, forKey: "menu")
-                    let tabbarController = self.storyboard?.instantiateViewController(withIdentifier: "tabbar") as! UITabBarController
-                    self.navigationController?.pushViewController(tabbarController, animated: true)
+                    Alamofire.request("\(CommonHomeAPI)/index.php?option=com_ajax&group=xdajax&plugin=xpressDeal&format=json&type=getProfile", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+                        
+                            if let json = response.result.value {
+                                let jsonResult = ((json as AnyObject).value(forKey: "data")! as! NSDictionary)
+                                UserDefaults.standard.set(jsonResult, forKey: "Userinfo")
+                                UserDefaults.standard.synchronize()
+                            }
+                        
+                        DispatchQueue.main.async {
+                            if(UserDefaults.standard.bool(forKey: "menu1"))
+                            {
+                            UserDefaults.standard.set(true, forKey: "menu")
+                            UserDefaults.standard.synchronize()
+                            let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+                            self.navigationController?.pushViewController(profileView, animated: true)
+                            }
+                            else
+                            {
+                                self.backHome()
+                            }
+                        UserDefaults.standard.synchronize()
+                        }
                     }
-                    else
-                    {
-                        self.backHome()
-                    }
-                    UserDefaults.standard.synchronize()
                 }
                 self.txt_username.endEditing(true)
             })

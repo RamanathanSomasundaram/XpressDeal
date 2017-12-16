@@ -25,10 +25,7 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         signup_Btn.layer.cornerRadius = signup_Btn.frame.size.height / 2
         //Navigation Controller backbutton hide
-        self.title = "XpressDeal"
-        self.navigationController?.navigationBar.barTintColor = navigationbarColor
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        Utilities.homeNavigationMenu(rootVC: self)
         self.navigationItem.hidesBackButton = true
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white

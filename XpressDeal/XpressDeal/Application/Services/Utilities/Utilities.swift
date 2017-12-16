@@ -181,6 +181,10 @@ class Utilities: NSObject {
     //MARK: NavigationMenu Showing
     class func homeNavigationMenu(rootVC : UIViewController)
     {
+        let logo = UIImage(named: "navigation_logo")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        rootVC.navigationItem.titleView = imageView
         rootVC.navigationController?.navigationBar.barTintColor = navigationbarColor
         rootVC.navigationController?.navigationBar.isTranslucent = false
         rootVC.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]

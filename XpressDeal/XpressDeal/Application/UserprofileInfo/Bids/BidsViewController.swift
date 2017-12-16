@@ -18,11 +18,9 @@ class BidsViewController: UIViewController {
     var bidMinMax : String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "XpressDeal"
+        //self.title = "XpressDeal"
         BitCountArray = NSArray()
-        self.navigationController?.navigationBar.barTintColor = navigationbarColor
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        Utilities.homeNavigationMenu(rootVC: self)
         self.navigationItem.hidesBackButton = true
         let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
         flipButton.tintColor = UIColor.white
@@ -142,7 +140,7 @@ extension BidsViewController : UITableViewDelegate,UITableViewDataSource{
         return cell!
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 90
     }
 }
 
