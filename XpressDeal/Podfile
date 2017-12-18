@@ -1,0 +1,14 @@
+platform :ios, '9.0'
+
+target 'XpressDeal' do
+use_frameworks!
+pod 'Kingfisher', '~> 4.3'
+pod 'Firebase/Core'
+pod 'Alamofire'
+pod 'SkyFloatingLabelTextField', '~> 3.0'
+pod 'SideMenu'
+pod 'KJExpandableTableTree'
+pod 'ImageSlideshow', '~> 1.4'
+pod 'IGLDropDownMenu'
+
+end
