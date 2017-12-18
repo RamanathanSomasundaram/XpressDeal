@@ -20,17 +20,6 @@ class CategoriesListViewController: UIViewController {
         self.loadCategoriesList()
         tbl_CategoryList.backgroundColor = UIColor.black
         // Do any additional setup after loading the view.
-        Utilities.homeNavigationMenu(rootVC: self)
-        self.navigationItem.hidesBackButton = true
-        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
-        flipButton.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = flipButton
-        if(UserDefaults.standard.bool(forKey: "UserLogin"))
-        {
-        let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "user"), style: .plain, target: self, action: #selector(profileView))
-        flipRightButton.tintColor = UIColor.white
-        self.navigationItem.rightBarButtonItem = flipRightButton
-        }
         // Do any additional setup after loading the view.
     }
     @objc func backHome()
@@ -44,6 +33,19 @@ class CategoriesListViewController: UIViewController {
         let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         self.navigationController?.pushViewController(profileView, animated: true)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        Utilities.homeNavigationMenu(rootVC: self)
+        self.navigationItem.hidesBackButton = true
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
+        flipButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = flipButton
+        if(UserDefaults.standard.bool(forKey: "UserLogin"))
+        {
+            let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "user"), style: .plain, target: self, action: #selector(profileView))
+            flipRightButton.tintColor = UIColor.white
+            self.navigationItem.rightBarButtonItem = flipRightButton
+        }
+    }
     func loadCategoriesList()
     {
         if(Utilities.checkForInternet())
@@ -51,7 +53,6 @@ class CategoriesListViewController: UIViewController {
             Utilities.showLoading()
             Alamofire.request("\(CommonHomeAPI)/index.php?option=com_djclassifieds&view=items&format=json&cid=\(categoryID!)").responseJSON { response in
                 if let json = response.result.value {
-                    //print("JSON: \(json)") // serialized json response
                     let jsonResult = ((json as AnyObject).value(forKey: "data")! as! [Any])
                     self.categoriesListArray = NSMutableArray(array: jsonResult)
                 }

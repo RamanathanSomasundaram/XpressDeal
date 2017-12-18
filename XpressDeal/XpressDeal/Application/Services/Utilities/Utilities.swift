@@ -123,12 +123,10 @@ class Utilities: NSObject {
         let status = NetworkReachabilityManager.init(host: "www.google.com")
         if self.isConnectedToNetwork() == true && status?.networkReachabilityStatus != .notReachable
         {
-           // print("Internet Connection Available!")
             return true
         }
         else
         {
-            //print("Internet Connection not Available!")
             return false
         }
         

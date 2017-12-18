@@ -16,18 +16,6 @@ class FullImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.title = imagetitle
-        Utilities.homeNavigationMenu(rootVC: self)
-        // Do any additional setup after loading the view.
-        self.navigationItem.hidesBackButton = true
-        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
-        flipButton.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = flipButton
-        if(UserDefaults.standard.bool(forKey: "UserLogin"))
-        {
-            let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "user"), style: .plain, target: self, action: #selector(profileView))
-            flipRightButton.tintColor = UIColor.white
-            self.navigationItem.rightBarButtonItem = flipRightButton
-        }
         var imageSource = [InputSource]()
         for i in 0..<self.imageArray.count
         {
@@ -45,6 +33,20 @@ class FullImageViewController: UIViewController {
         imageSlideShow.activityIndicator = DefaultActivityIndicator()
         imageSlideShow.setImageInputs(imageSource)
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        Utilities.homeNavigationMenu(rootVC: self)
+        // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = true
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
+        flipButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = flipButton
+        if(UserDefaults.standard.bool(forKey: "UserLogin"))
+        {
+            let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "user"), style: .plain, target: self, action: #selector(profileView))
+            flipRightButton.tintColor = UIColor.white
+            self.navigationItem.rightBarButtonItem = flipRightButton
+        }
     }
     @objc func backHome()
     {

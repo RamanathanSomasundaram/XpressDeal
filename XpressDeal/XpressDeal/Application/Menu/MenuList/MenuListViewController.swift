@@ -27,24 +27,26 @@ class MenuListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = CategoryName
-        self.navigationController?.navigationItem.hidesBackButton = true
-        Utilities.homeNavigationMenu(rootVC:self )
-        Utilities.callSideMenu(rootVC: self)
-        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(leftMenuAction))
-        flipButton.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = flipButton
+       
         tbl_MenuList.tableFooterView = UIView()
          let treeDictionary = commonAppDelegate!.menulistArray.object(forKey: CategoryName) as! NSArray
         let subTree = treeDictionary.object(at: 0) as! NSDictionary
             if let arrayOfParents = subTree.object(forKey: "subcat") as? NSArray {
                 arrayParents = arrayOfParents
             }
-        
         if let arrayOfParents = arrayParents {
             kjtreeInstance = KJTree(parents: arrayOfParents, childrenKey: "subcat", idKey: "parent_id")
         }
         tbl_MenuList.reloadData()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationItem.hidesBackButton = true
+        Utilities.homeNavigationMenu(rootVC:self )
+        Utilities.callSideMenu(rootVC: self)
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(leftMenuAction))
+        flipButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = flipButton
     }
     @objc func leftMenuAction()
     {
@@ -127,9 +129,7 @@ extension MenuListViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let node = kjtreeInstance.tableView(tableView, didSelectRowAt: indexPath)
-        print("Node \(node)")
         let indexTuples = node.index.components(separatedBy: ".")
-        print("indexTuples \(indexTuples)")
         let arrayParent = (arrayParents!.object(at: (indexTuples[0] as NSString).integerValue) as! NSDictionary)
         if (arrayParent.value(forKey: "subcat") as? NSArray) == nil {
             self.CallCategoryClass(CategoryID : node.id)

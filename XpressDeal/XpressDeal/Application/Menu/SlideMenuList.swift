@@ -21,14 +21,14 @@ class SlideMenuList: UIViewController,UITableViewDataSource,UITableViewDelegate 
         commonAppDelegate = UIApplication.shared.delegate as! AppDelegate
         menuTitleList = commonAppDelegate.categoriesListArray
         tbl_schoolMenu.backgroundColor = UIColor.black
-        Utilities.homeNavigationMenu(rootVC:self)
-        navigationItem.titleView = nil
         tbl_schoolMenu.tableFooterView = UIView()
         self.tbl_schoolMenu.register(UINib.init(nibName: "ListParentTableViewCell", bundle: nil), forCellReuseIdentifier: "parentCell")
        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        Utilities.homeNavigationMenu(rootVC:self)
+        navigationItem.titleView = nil
         if(!UserDefaults.standard.bool(forKey: "UserLogin"))
         {
 

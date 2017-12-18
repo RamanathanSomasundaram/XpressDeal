@@ -47,17 +47,7 @@ class CategoriesDetailViewController: UIViewController {
         userReviewKey = NSMutableArray()
         self.loadCategoriesList()
         // Do any additional setup after loading the view.
-        Utilities.homeNavigationMenu(rootVC: self)
-        self.navigationItem.hidesBackButton = true
-        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
-        flipButton.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = flipButton
-        if(UserDefaults.standard.bool(forKey: "UserLogin"))
-        {
-            let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "user"), style: .plain, target: self, action: #selector(profileView))
-            flipRightButton.tintColor = UIColor.white
-            self.navigationItem.rightBarButtonItem = flipRightButton
-        }
+        
         // Do any additional setup after loading the view.
     }
     @objc func backHome()
@@ -72,7 +62,19 @@ class CategoriesDetailViewController: UIViewController {
         let profileView = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         self.navigationController?.pushViewController(profileView, animated: true)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        Utilities.homeNavigationMenu(rootVC: self)
+        self.navigationItem.hidesBackButton = true
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
+        flipButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = flipButton
+        if(UserDefaults.standard.bool(forKey: "UserLogin"))
+        {
+            let flipRightButton = UIBarButtonItem.init(image: UIImage.init(named: "user"), style: .plain, target: self, action: #selector(profileView))
+            flipRightButton.tintColor = UIColor.white
+            self.navigationItem.rightBarButtonItem = flipRightButton
+        }
+    }
     func loadCategoriesList()
     {
         if(Utilities.checkForInternet())
@@ -134,7 +136,7 @@ class CategoriesDetailViewController: UIViewController {
     func loadUserReview()
     {
         Utilities.showLoading()
-        Alamofire.request("http://172.104.181.194/demos/dj/?option=com_djreviews&view=reviewslist&format=json&id=8&limitstart=0", method: .post, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+        Alamofire.request("\(CommonHomeAPI)/?option=com_djreviews&view=reviewslist&format=json&id=8&limitstart=0", method: .post, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             if let json = response.result.value {
                 let jsonResult = ((json as AnyObject).value(forKey: "data")! as! NSDictionary)
                 if((jsonResult.value(forKey: "items")! as? NSDictionary) != nil)
@@ -153,10 +155,8 @@ class CategoriesDetailViewController: UIViewController {
                 self.tbl_userReview.reloadData()
                 Utilities.hideLoading()
                 self.detailViewConstraint.constant = self.txtView_Desc.frame.size.height
-                print(self.txtView_Desc.bounds.size.height)
-                print("Desc Height \(self.descView.frame.size.height)")
                 self.spl_ContentHeight.constant = self.tbl_specific.contentSize.height
-                self.contentHeight.constant = 375 + self.txtView_Desc.frame.size.height + self.tbl_specific.contentSize.height + self.tableHeight
+                self.contentHeight.constant = 470 + self.txtView_Desc.frame.size.height + self.tbl_specific.contentSize.height + self.tbl_userReview.contentSize.height
             })
         }
     }
@@ -287,7 +287,7 @@ extension CategoriesDetailViewController : UITableViewDelegate, UITableViewDataS
         let imageDict = (imageArray.object(at: indexPath.row) as! NSDictionary)
         Tbl_detail.backgroundColor = UIColor.black
         cell.img_detail.kf.indicatorType = .activity
-        cell.img_detail.kf.setImage(with: URL(string: "http://172.104.181.194/demos/dj\((imageDict.value(forKey: "thumb_b") as! String))"), placeholder: image , options: [.processor(processor)])
+        cell.img_detail.kf.setImage(with: URL(string: "http://172.104.181.194/demos/dj\((imageDict.value(forKey: "thumb_b") as! String))"), placeholder: image)
         let dicValues = (self.displayDetailDict.value(forKey: "item")! as! NSDictionary)
         cell.imgClick.addTarget(self, action: #selector(imageZoom), for: .touchUpInside)
         cell.createTitle.text = "Created By : \(dicValues.value(forKey: "username")!)"
@@ -295,6 +295,10 @@ extension CategoriesDetailViewController : UITableViewDelegate, UITableViewDataS
         cell.lbl_Email.text = "Email : \(dicValues.value(forKey: "u_email")!)"
         cell.lbl_AddDate.text = "Added Date : \(dicValues.value(forKey: "date_start")!)"
         cell.selectionStyle = .none
+        cell.imgClick.layer.cornerRadius = 20
+        cell.imgClick.layer.masksToBounds = true
+        cell.imgClick.clipsToBounds = true
+        cell.layoutIfNeeded()
         return cell
         }
         else if(tableView == tbl_userReview)
@@ -340,12 +344,13 @@ extension CategoriesDetailViewController : UITableViewDelegate, UITableViewDataS
         }
     }
     func tableHeightCalculate (){
-        contentHeight.constant = 375 + self.txtView_Desc.frame.size.height + spc_Height + tableHeight
+        contentHeight.constant = 470 + self.txtView_Desc.frame.size.height + spc_Height + tableHeight
     }
     func tableSpcHeightCalculate ()
     {
+
         spl_ContentHeight.constant = spc_Height
-        contentHeight.constant = 375 + self.txtView_Desc.frame.size.height + spc_Height + tableHeight
+        contentHeight.constant = 470 + self.txtView_Desc.frame.size.height + spc_Height + tableHeight
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(tableView == tbl_userReview)
@@ -358,13 +363,13 @@ extension CategoriesDetailViewController : UITableViewDelegate, UITableViewDataS
         }
         else
         {
-        return 175
+        return UITableViewAutomaticDimension
         }
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(tableView == Tbl_detail)
+        if(tableView == tbl_userReview)
         {
-            return 100
+            return 150
         }
         else if(tableView == tbl_specific)
         {

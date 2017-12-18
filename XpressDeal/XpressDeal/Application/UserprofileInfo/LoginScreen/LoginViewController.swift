@@ -16,21 +16,32 @@ class LoginViewController: UIViewController {
     @IBOutlet var txt_password: SkyFloatingLabelTextField!
     var ErrorMessage : String!
 
-    @IBOutlet var img_logo: UIButton!
+    @IBOutlet var img_logo: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         signin_Btn.layer.cornerRadius = signin_Btn.frame.size.height / 2
+        img_logo.layer.cornerRadius = img_logo.frame.size.width / 2
+        img_logo.layer.masksToBounds = true
+        img_logo.clipsToBounds = true
+        img_logo.layoutIfNeeded()
         //NavigationController background color
         //self.title = "XpressDeal"
+        
+        txt_username.delegate = self
+        txt_username.tag = 256
+        
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
         if(UserDefaults.standard.bool(forKey: "menu1"))
         {
-        self.navigationController?.navigationItem.hidesBackButton = true
-        Utilities.homeNavigationMenu(rootVC: self)
-        Utilities.callSideMenu(rootVC: self)
-        // Do any additional setup after loading the view.
-        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(leftMenuAction))
-        flipButton.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = flipButton
+            self.navigationController?.navigationItem.hidesBackButton = true
+            Utilities.homeNavigationMenu(rootVC: self)
+            Utilities.callSideMenu(rootVC: self)
+            // Do any additional setup after loading the view.
+            let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "slidemenu.png"), style: .plain, target: self, action: #selector(leftMenuAction))
+            flipButton.tintColor = UIColor.white
+            self.navigationItem.leftBarButtonItem = flipButton
         }
         else
         {
@@ -40,10 +51,6 @@ class LoginViewController: UIViewController {
             flipButton.tintColor = UIColor.white
             self.navigationItem.leftBarButtonItem = flipButton
         }
-        txt_username.delegate = self
-        txt_username.tag = 256
-        
-        // Do any additional setup after loading the view.
     }
     @objc func leftMenuAction()
     {

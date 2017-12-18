@@ -42,12 +42,10 @@ class ReportAbuseViewController: UIViewController {
                     if((message.value(forKey: "success") as? NSArray) != nil)
                     {
                         commonAppDelegate.window?.makeToast(message: ((message.value(forKey: "success") as! NSArray).object(at: 0) as! String), duration: 1.0, position: "center" as AnyObject)
-                        print(message)
                     }
                     else
                     {
                         commonAppDelegate.window?.makeToast(message: ((message.value(forKey: "error") as! NSArray).object(at: 0) as! String), duration: 1.0, position: "center" as AnyObject)
-                        print(message)
                     }
                     Utilities.hideLoading()
                     self.rootVC.dismiss(animated: true, completion: nil)

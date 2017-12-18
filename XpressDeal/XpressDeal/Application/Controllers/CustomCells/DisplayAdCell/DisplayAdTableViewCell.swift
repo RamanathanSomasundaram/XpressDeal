@@ -30,7 +30,7 @@ class DisplayAdTableViewCell: UITableViewCell {
         self.catRating.isUserInteractionEnabled = false
         let image : UIImage = UIImage(named: "car")!
         self.catImg.kf.indicatorType = .activity
-        self.catImg.kf.setImage(with: URL(string: "\(CommonHomeAPI)/\(dicValues.value(forKey: "images")! as! String)")!, placeholder: image , options: [.processor(processor)])
+        self.catImg.kf.setImage(with: URL(string: "\(CommonHomeAPI)/\(dicValues.value(forKey: "images")! as! String)")!, placeholder: image)
         self.catTitle.text = (dicValues.value(forKey: "title") as! String)
         self.catDesc.text = (dicValues.value(forKey: "description") as! String)
         self.catStart.text = (dicValues.value(forKey: "start_date") as! String)
@@ -54,7 +54,11 @@ class DisplayAdTableViewCell: UITableViewCell {
             displayLabel.isHidden = false
             displayLabel.text = (dicValues.value(forKey: "display") as! String)
         }
+        self.catImg.layer.cornerRadius = 20
         self.catImg.backgroundColor = UIColor.clear
+        self.catImg.layer.masksToBounds = true
+        self.catImg.clipsToBounds = true
+        self.catImg.layoutIfNeeded()
         Utilities.viewBorderColor(ContentView: CellView)
 
     }

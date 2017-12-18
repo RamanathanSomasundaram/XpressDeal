@@ -29,10 +29,11 @@ class HomeViewController: UIViewController {
         self.listCollectionView.dataSource = self
         categoriesListArray = NSMutableArray()
         //self.revealViewController().delegate = self
-        self.setupNavigationController()
+        //self.setupNavigationController()
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(_ animated: Bool) {
+        self.setupNavigationController()
         searchBarTopConstraint.constant = -80
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -100,11 +101,9 @@ class HomeViewController: UIViewController {
         Utilities.showLoading()
         Alamofire.request(URLString).responseJSON { response in
             if let json = response.result.value {
-                //print("JSON: \(json)") // serialized json response
                 let jsonResult = ((json as AnyObject).value(forKey: "data")! as! [Any])
                 self.categoriesListArray = NSMutableArray(array: jsonResult)
                 commonAppDelegate.categoriesListArray = self.categoriesListArray
-                //APIManagerClass.navigationSubmenuList(URLString: navigationMenuAPI)
             }
             let dispatchTime = DispatchTime.now()
             DispatchQueue.main.asyncAfter(deadline: dispatchTime , execute: {
@@ -196,7 +195,6 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
         {
             dicSelected = self.categoriesListArray.object(at: indexPath.row) as! NSDictionary
         }
-        print(dicSelected)
         let categoryClass = self.storyboard?.instantiateViewController(withIdentifier: "CategoriesListViewController") as! CategoriesListViewController
         categoryClass.categoryID = (dicSelected.value(forKey: "id") as! String)
         self.navigationController?.pushViewController(categoryClass, animated: true)
@@ -233,13 +231,11 @@ extension HomeViewController : UISearchBarDelegate{
                 let stringMatch = finalName.lowercased().range(of:searchText.lowercased())
                 if(stringMatch != nil)
                 {
-                    //print("success")
                     let dicAudioTypeDetails = rec
                     arrayForSearchFiles.add(dicAudioTypeDetails)
                 }
                 else
                 {
-                    // print("failure")
                 }
                 
             }
@@ -272,19 +268,19 @@ extension HomeViewController : UISearchBarDelegate{
 extension HomeViewController: UISideMenuNavigationControllerDelegate {
     
     func sideMenuWillAppear(menu: UISideMenuNavigationController, animated: Bool) {
-        print("SideMenu Appearing! (animated: \(animated))")
+        //print("SideMenu Appearing! (animated: \(animated))")
     }
     
     func sideMenuDidAppear(menu: UISideMenuNavigationController, animated: Bool) {
-        print("SideMenu Appeared! (animated: \(animated))")
+        //print("SideMenu Appeared! (animated: \(animated))")
     }
     
     func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappearing! (animated: \(animated))")
+        //print("SideMenu Disappearing! (animated: \(animated))")
     }
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappeared! (animated: \(animated))")
+        //print("SideMenu Disappeared! (animated: \(animated))")
     }
     
 }

@@ -47,7 +47,6 @@ class BidsViewController: UIViewController {
                 if let json = response.result.value {
                     let jsonResult = ((json as AnyObject).value(forKey: "data")! as! NSDictionary)
                      dicValues = jsonResult
-                    print(jsonResult)
                 }
             
             let dispatchTime = DispatchTime.now()
@@ -86,12 +85,10 @@ class BidsViewController: UIViewController {
                 if((message.value(forKey: "success") as? NSArray) != nil)
                 {
                     commonAppDelegate.window?.makeToast(message: ((message.value(forKey: "success") as! NSArray).object(at: 0) as! String), duration: 1.0, position: "center" as AnyObject)
-                    print(message)
                 }
                 else
                 {
                     commonAppDelegate.window?.makeToast(message: ((message.value(forKey: "error") as! NSArray).object(at: 0) as! String), duration: 1.0, position: "center" as AnyObject)
-                    print(message)
                 }
                 Utilities.hideLoading()
             }

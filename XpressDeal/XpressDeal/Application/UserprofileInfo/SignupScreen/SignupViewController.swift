@@ -25,11 +25,7 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
         signup_Btn.layer.cornerRadius = signup_Btn.frame.size.height / 2
         //Navigation Controller backbutton hide
-        Utilities.homeNavigationMenu(rootVC: self)
-        self.navigationItem.hidesBackButton = true
-        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
-        flipButton.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = flipButton
+        
         let inputFileds = [txt_fullName, txt_Username,txt_Email, txt_confirmEmail,txt_password ,txt_confirmPassword]
         
         for fields in inputFileds
@@ -38,6 +34,13 @@ class SignupViewController: UIViewController {
         }
         
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        Utilities.homeNavigationMenu(rootVC: self)
+        self.navigationItem.hidesBackButton = true
+        let flipButton = UIBarButtonItem.init(image: UIImage.init(named: "ic_back-40.png"), style: .plain, target: self, action: #selector(backHome))
+        flipButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = flipButton
     }
     @objc func backHome()
     {
@@ -68,7 +71,6 @@ class SignupViewController: UIViewController {
             case .success(let upload, _, _):
                 upload.responseJSON { response in
                     if let JSON = response.result.value {
-                        print("JSON: \(JSON)")
                         let jsonResult = ((JSON as AnyObject).value(forKey: "data")! as! Bool)
                         let jsonResult1 = ((JSON as AnyObject).value(forKey: "messages")! as! NSDictionary)
                             if(jsonResult)
